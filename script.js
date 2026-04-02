@@ -1,4 +1,9 @@
-const container = document.getElementById("container");
+const resultado = document.getElementById("container");
+const input = document.getElementById("input");
+const status = document.getElementById("status");
+const btnInstalar = document.getElementById("btnInstalar");
+
+let deferredPrompt = null;
 
 async function carregarAleatorio() {
   const random = Math.random() > 0.5 ? "dog" : "cat";
@@ -6,17 +11,17 @@ async function carregarAleatorio() {
 }
 
 function buscarAnimal() {
-  const valor = document.getElementById("input").value.toLowerCase();
+  const valor = input.value.trim().toLowerCase();
 
   if (valor === "dog" || valor === "cat") {
     buscarAPI(valor);
   } else {
-    container.innerHTML = "Digite 'dog' ou 'cat'";
+    resultado.innerHTML = `<div class="mensagem">Digite apenas <strong>dog</strong> ou <strong>cat</strong>.</div>`;
   }
 }
 
 async function buscarAPI(tipo) {
-  container.innerHTML = "Carregando...";
+  resultado.innerHTML = `<div class="mensagem">Carregando...</div>`;
 
   try {
     let url = "";
@@ -38,9 +43,61 @@ async function buscarAPI(tipo) {
       imagem = dados[0].url;
     }
 
-    container.innerHTML = `<img src="${imagem}">`;
-
+    resultado.innerHTML = `
+      <article class="card">
+        <img src="${imagem}" alt="Imagem de ${tipo}">
+        <div class="info">
+          <h2>${tipo}</h2>
+          <p>Imagem carregada pela API com sucesso.</p>
+        </div>
+      </article>
+    `;
   } catch (erro) {
-    container.innerHTML = "Erro ao carregar";
+    resultado.innerHTML = `<div class="mensagem">Erro ao carregar imagem.</div>`;
   }
 }
+
+function pegarLocalizacao() {
+  if (!navigator.geolocation) {
+    status.innerHTML = "Geolocalização não suportada neste navegador.";
+    return;
+  }
+
+  status.innerHTML = "Buscando localização...";
+
+  navigator.geolocation.getCurrentPosition(
+    (posicao) => {
+      const latitude = posicao.coords.latitude.toFixed(4);
+      const longitude = posicao.coords.longitude.toFixed(4);
+
+      status.innerHTML = `
+        Latitude: ${latitude}<br>
+        Longitude: ${longitude}
+      `;
+    },
+    () => {
+      status.innerHTML = "Não foi possível pegar sua localização.";
+    }
+  );
+}
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js");
+  });
+}
+
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  deferredPrompt = event;
+  btnInstalar.hidden = false;
+});
+
+btnInstalar.addEventListener("click", async () => {
+  if (!deferredPrompt) return;
+
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  btnInstalar.hidden = true;
+});

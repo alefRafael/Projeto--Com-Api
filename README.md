@@ -1,45 +1,23 @@
-#  App de Animais
+# App de Animais PWA
 
-Projeto simples desenvolvido com HTML, CSS e JavaScript, que consome APIs públicas para exibir imagens de animais.
+Projeto web com foco mobile que consome API de gatos e cachorros.
 
-##  Funcionalidades
+## Funcionalidades
+- Busca de imagens por API
+- Botão aleatório
+- Geolocalização
+- PWA instalável
+- Funcionamento offline básico
 
-- Buscar animais digitando:
-  - dog 
-  - cat 
-- Botão para carregar animal aleatório
-- Exibição de imagens na tela
-
-## Tecnologias utilizadas
-
+## Tecnologias
 - HTML
 - CSS
 - JavaScript
+- Web App Manifest
+- Service Worker
 
-## APIs utilizadas
+## Deploy
+https://effervescent-lollipop-677fb7.netlify.app/
 
-- https://dog.ceo/dog-api/  
-- https://thecatapi.com/
-
-## Responsividade
-
-O projeto foi desenvolvido com foco em mobile, garantindo boa visualização em celulares.
-
-##  Como usar
-
-1. Digite "dog" ou "cat" no campo de busca  
-2. Clique em "Buscar"  
-ou  
-3. Clique em "Aleatório"
-
-## 🔗 Acesse o projeto
-
-https://fancy-belekoy-08942a.netlify.app/
-
-## 📁 Repositório
-
-https://github.com/alefRafael/Projeto--Com-Api
-
-
-
-Desenvolvido para atividade prática de consumo de API.
+## Repositório
+https://github.com/alefRafael/Projeto---com---Api---pwa

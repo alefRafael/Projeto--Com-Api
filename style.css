@@ -1,42 +1,135 @@
-body {
-  font-family: Arial;
-  text-align: center;
-  background: #f2f2f2;
-  padding: 10px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
+  color: #1f2937;
+}
+
+.topo {
+  background: #153996;
+  color: white;
+  text-align: center;
+  padding: 24px 16px;
+}
+
+.topo h1 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.topo p {
+  font-size: 0.95rem;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 16px;
+}
 
 .box {
+  background: white;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-top: -18px;
+}
+
+#input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.botoes {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-
-input {
-  padding: 12px;
-  width: 100%;
-  font-size: 16px;
-}
-
-
 button {
+  border: none;
+  border-radius: 12px;
   padding: 12px;
-  font-size: 16px;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
+.botoes button:nth-child(1) {
+  background: #153996;
+  color: white;
+}
 
-img {
+.botoes button:nth-child(2) {
+  background: #0f766e;
+  color: white;
+}
+
+.botoes button:nth-child(3) {
+  background: #f59e0b;
+  color: white;
+}
+
+#btnInstalar {
+  background: #7c3aed;
+  color: white;
   width: 100%;
-  max-width: 300px;
-  margin-top: 15px;
-  border-radius: 10px;
+  margin-top: 10px;
 }
 
+#status {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: #334155;
+  text-align: center;
+}
 
-@media (min-width: 600px) {
-  .box {
-    max-width: 400px;
-    margin: auto;
+#container {
+  margin-top: 18px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card img {
+  width: 100%;
+  display: block;
+  height: 280px;
+  object-fit: cover;
+}
+
+.info {
+  padding: 14px;
+  text-align: center;
+}
+
+.info h2 {
+  margin-bottom: 6px;
+  text-transform: capitalize;
+}
+
+.mensagem {
+  background: white;
+  padding: 14px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+@media (min-width: 700px) {
+  .card img {
+    height: 340px;
   }
 }
